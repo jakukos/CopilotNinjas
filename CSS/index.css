@@ -1,0 +1,16 @@
+h1{
+    text-align: center;
+}
+
+.timetable table{
+    text-align: center;
+}
+
+.filterMenu{
+    position: fixed;
+    text-align: center;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    padding: 10px;
+}

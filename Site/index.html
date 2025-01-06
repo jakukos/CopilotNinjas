@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="pl">
+    <head>
+        <meta charset="UTF-8"/>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <!--- TODO zmina stylów onepage --->
+        <link rel="stylesheet" type="text/css" href="../CSS/index.css"/>
+        <link rel="icon" type="image/icon" href="../Images/titleIco.png"/>
+        <title>Plan CopilotNinjas</title>
+    </head>
+    <body>
+        <div class="timetable">
+            <!---- Guzik do obsługi widoku planu dzień/tydzień/miesiąc ---->
+            <button class="timeInterval"></button>
+            <!---- Sekcja na plan ---->
+            <h1>Plan zajęć</h1>
+            <table>
+                <tr>
+                    <th>Poniedziałek</th>
+                    <th>Wtorek</th>
+                    <th>Środa</th>
+                    <th>Czwartek</th>
+                    <th>Piątek</th>
+                    <th>Sobota</th>
+                    <th>Niedziela</th>
+                </tr>
+                <tr>
+
+                </tr>
+                <tr>
+
+                </tr>
+                <tr>
+
+                </tr>
+                <tr>
+
+                </tr>
+                <tr>
+
+                </tr>
+                <tr>
+
+                </tr>
+            </table>
+        </div>
+        <div class="filterMenu">
+            <!---- Sekcja na menu filtrów ---->
+            <form action="?">
+                <label>
+                    <input id="teaacher" placeholder="Wykładowca" type="text" name="teacher">
+                </label>
+                <label>
+                    <input id="classRoom" placeholder="Nr.Sali"  type="text" name="classRoom">
+                </label>
+                <label>
+                    <input id="groupNumber" placeholder="Nr.Grupy" type="text" name="groupNumber">
+                </label>
+                <label>
+                    <input id="albumNumber" placeholder="00000" type="text" name="albumNumber"  maxlength="5">
+                </label>
+            </form>
+            <button>Wyszukaj</button>
+        </div>
+    </body>
+</html>
