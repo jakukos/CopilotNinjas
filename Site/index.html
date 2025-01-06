@@ -8,13 +8,19 @@
         <link rel="icon" type="image/icon" href="../Images/titleIco.png"/>
         <script src="../Scripts/timeIntervalSwitcher.js"></script>
         <script src="../Scripts/disabilityStylesControl.js"></script>
+        <script src="../Scripts/stylesController.js"></script>
+        <script src="../Scripts/filterMenu.js"></script>
         <title>Plan CopilotNinjas</title>
     </head>
     <body>
+    <!---- Sekcja do obsługi wsparcia dla osób słabowidzących oraz tryb ciemny ---->
         <div class="fontSize">
             <button id="smallerFont">-</button>
             <button id="resetFont">A</button>
             <button id="boggerFont">+</button>
+        </div>
+        <div class="dark-mode">
+            <button id="switchTheme"><img src="../Images/darkIco.svg" alt="Dark Mode Toggle"> </button>
         </div>
         <div class="timetable">
             <!---- Guzik do obsługi widoku planu dzień/tydzień/miesiąc ---->
@@ -87,7 +93,9 @@
                     <input id="albumNumber" placeholder="00000" type="text" name="albumNumber"  maxlength="5">
                 </label>
             </form>
-            <button>Wyszukaj</button>
+            <button id="search">Wyszukaj</button>
+                <button id="compare">Porównaj</button>
+                </div>
         </div>
     </body>
 </html>

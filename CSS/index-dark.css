@@ -3,48 +3,35 @@
     padding: 0;
     box-sizing: border-box;
 }
-html, body{
+
+html, body {
     height: 100%;
     width: 100%;
 }
 
-body{
+body {
     display: flex;
     flex-direction: column;
     min-height: 100vh;
+    transition: background-color 0.3s, color 0.3s; /* Dodanie płynnej zmiany kolorów */
 }
 
-/* Sekcja obsługi dla osób niepełnosprawnych */
-.fontSize{
-    position: fixed;
-    top: 10px;
-    right: 10px;
-    display: flex;
-    flex-direction: row;
-    gap: 10px;
-    z-index: 1000;
+/* Tryb ciemny */
+body.dark-mode {
+    background-color: #121212;
+    color: #e0e0e0;
 }
 
-.fontSize button{
-    padding: 10px;
-    font-size: 10px;
-    background-color: #0a5208;
-    color: white;
-    border: none;
-    border-radius: 5px;
-    cursor: pointer;
-    transition: background-color 0.3s;
+h1 {
+    text-align: center;
+    color: inherit; /* Zapewnia, że kolor nagłówka dziedziczy kolor z body */
 }
 
-h1{
+.timetable table {
     text-align: center;
 }
 
-.timetable table{
-    text-align: center;
-}
-
-.filterMenu{
+.filterMenu {
     position: fixed;
     text-align: center;
     bottom: 0;
@@ -52,6 +39,7 @@ h1{
     width: 100%;
     padding: 10px;
 }
+
 /* Stylizacja planu */
 .timetable {
     flex-grow: 1;
@@ -62,25 +50,14 @@ h1{
     background-color: #fff;
     border-radius: 8px;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    transition: background-color 0.3s;
 }
 
-#compare{
-    background-color: #0a5208;
-    color: white;
-    border: none;
-    padding: 10px 20px;
-    font-size: 16px;
-    cursor: pointer;
-    border-radius: 5px;
+body.dark-mode .timetable {
+    background-color: #333;
+    color: #fff;
 }
-/* guzik porówań powinien być wyłączony jeżeli w wyszukiwanaich nic sie nie zmieniło,
-bo po co porównywać to samo
- */
-#compare:disabled{
-    background-color: #ccc;
-    cursor: not-allowed;
-}
-/* Sylizacja guzika wyboru zakresu czasu planu */
+
 .timeInterval {
     padding: 10px 20px;
     background-color: #0a5208;
@@ -90,6 +67,10 @@ bo po co porównywać to samo
     font-size: 16px;
     border-radius: 5px;
     margin: 10px 0;
+}
+
+body.dark-mode .timeInterval {
+    background-color: #4CAF50;
 }
 
 ul li {
@@ -115,10 +96,18 @@ ul li a:hover {
     border-radius: 5px;
     margin-top: 20px;
 }
+
+body.dark-mode #daily,
+body.dark-mode #weekly,
+body.dark-mode #monthly {
+    background-color: #444;
+    color: #fff;
+}
+
 .hidden {
     display: none;
 }
-/* Stylizacja guzika - że listy rozwijanej po kliknięciu */
+
 #timeMenu {
     text-align: left;
     padding: 10px;
@@ -130,6 +119,11 @@ ul li a:hover {
     box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
 }
 
+body.dark-mode #timeMenu {
+    background-color: #333;
+    color: #fff;
+}
+
 #timeMenu li a {
     color: black;
     padding: 10px;
@@ -138,15 +132,22 @@ ul li a:hover {
     border-radius: 3px;
 }
 
+body.dark-mode #timeMenu li a {
+    color: #fff;
+}
+
 #timeMenu li a:hover {
     background-color: #f0f0f0;
+}
+
+body.dark-mode #timeMenu li a:hover {
+    background-color: #575757;
 }
 
 #timeMenu.active {
     display: block;
 }
 
-/* Wyświetlanie aktywnej sekcji */
 #daily.active, #weekly.active, #monthly.active {
     display: block;
 }
@@ -163,7 +164,12 @@ ul li a:hover {
     position: fixed;
     bottom: 0;
     margin-bottom: 30px;
-    z-index: 1000; /*Triczek zeby pole filtrów nam nie znikaało 😎*/
+    z-index: 1000;
+}
+
+body.dark-mode .filterMenu {
+    background-color: #444;
+    color: #fff;
 }
 
 .filterMenu form {
@@ -179,9 +185,19 @@ ul li a:hover {
     border-radius: 5px;
 }
 
+body.dark-mode .filterMenu input {
+    background-color: #555;
+    color: #fff;
+    border-color: #444;
+}
+
 .filterMenu input:focus {
     outline: none;
     border-color: #4CAF50;
+}
+
+body.dark-mode .filterMenu input:focus {
+    border-color: #80e080;
 }
 
 .filterMenu button {
@@ -195,8 +211,16 @@ ul li a:hover {
     margin-top: 15px;
 }
 
+body.dark-mode .filterMenu button {
+    background-color: #80e080;
+}
+
 .filterMenu button:hover {
     background-color: #45a049;
+}
+
+body.dark-mode .filterMenu button:hover {
+    background-color: #6ea76e;
 }
 
 /* Stylizacja dla kontenera, aby menu było zawsze na dole */
