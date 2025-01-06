@@ -6,45 +6,66 @@
         <!--- TODO zmina stylów onepage --->
         <link rel="stylesheet" type="text/css" href="../CSS/index.css"/>
         <link rel="icon" type="image/icon" href="../Images/titleIco.png"/>
+        <script src="../Scripts/timeIntervalSwitcher.js"></script>
         <title>Plan CopilotNinjas</title>
     </head>
     <body>
         <div class="timetable">
             <!---- Guzik do obsługi widoku planu dzień/tydzień/miesiąc ---->
-            <button class="timeInterval"></button>
+            <button class="timeInterval" onclick="toggleMenu()">Okres czasu</button>
+            <ul id="timeMenu" class="hidden">
+                <li><a href="javascript:void(0);" onclick="changeView('daily')">Dzień</a></li>
+                <li><a href="javascript:void(0);" onclick="changeView('weekly')">Tydzień</a></li>
+                <li><a href="javascript:void(0);" onclick="changeView('monthly')">Miesiąc</a></li>
+            </ul>
             <!---- Sekcja na plan ---->
             <h1>Plan zajęć</h1>
-            <table>
-                <tr>
-                    <th>Poniedziałek</th>
-                    <th>Wtorek</th>
-                    <th>Środa</th>
-                    <th>Czwartek</th>
-                    <th>Piątek</th>
-                    <th>Sobota</th>
-                    <th>Niedziela</th>
-                </tr>
-                <tr>
+            <div id="daily">
+                <table>
+                    <thead>
+                    <tr>
+                        <th>Godzina</th>
+                        <th>Przedmiot</th>
+                        <th>Wykładowca</th>
+                        <th>Sala</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    </tbody>
+                </table>
+            </div>
+            <div id="weekly">
+                <table>
+                    <thead>
+                    <tr>
+                        <th>Dzień</th>
+                        <th>Godzina</th>
+                        <th>Przedmiot</th>
+                        <th>Wykładowca</th>
+                        <th>Sala</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    </tbody>
+                </table>
+            </div>
+            <div id="monthly">
+                <table>
+                    <thead>
+                    <tr>
+                        <th>Dzień</th>
+                        <th>Godzina</th>
+                        <th>Przedmiot</th>
+                        <th>Wykładowca</th>
+                        <th>Sala</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    </tbody>
+                </table>
+            </div>
 
-                </tr>
-                <tr>
-
-                </tr>
-                <tr>
-
-                </tr>
-                <tr>
-
-                </tr>
-                <tr>
-
-                </tr>
-                <tr>
-
-                </tr>
-            </table>
-        </div>
-        <div class="filterMenu">
+            <div class="filterMenu">
             <!---- Sekcja na menu filtrów ---->
             <form action="?">
                 <label>
