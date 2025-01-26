@@ -1,327 +1,370 @@
-* {
+body {
+    font-family: 'Poppins', sans-serif;
     margin: 0;
     padding: 0;
     box-sizing: border-box;
-    font-family: 'Poppins', sans-serif;
-}
-html, body{
-
-    width: 100%;
-}
-/* Sekcja obsługi trybu ciemnego - TODO wszystko co dotyczy trybu ciemnego w jednym miejscu */
-body.dark-mode{
-    background-color: #182018;
 }
 
+header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    background-color: #F5F7FB;
+    color: black;
+    padding: 10px 20px 50px;
+}
 
+header.dark-mode{
+    background-color: #282929;
+    color: #fff;
+}
+header svg{
+    width: 100px;
+}
+header h1 {
+    font-size: 3em;
+    margin: 0;
+}
 
-body{
+.tabsContainer {
+    display: flex;
+    justify-content: center;
+    background-color: #008046;
+    padding: 10px 0;
+    border-bottom: 1px solid #ccc;
+    position: relative;
+
+}
+
+#tabs {
+    position: absolute;
+    top: -50px;
+    display: flex;
+}
+
+.tab-button {
+    position: relative;
+    z-index: 1;
+    font-size: 1em;
+    cursor: pointer;
+    padding: 10px 15px;
+    color: #fff;
+    border: none;
+    text-align: center;
+    width: 150px;
+    height: 60px;
+    color: #000;
+    /* Tło jako SVG */
+    background: url("../Images/tab_s.svg") no-repeat center center;
+    transition: all 0.3s ease;
+    background-size: contain;
+}
+
+.tab-button.active {
+    background: url("../Images/tab.svg") no-repeat center center;
+
+    background-size: contain;
+    font-weight: bold;
+    color: #fff;
+}
+
+.tab-button:hover {
+    filter: brightness(0.9);
+}
+
+#dateInfoBox{
+    display: flex;
+}
+
+#dateButtons button{
+    margin: 5px;
+    padding: 10px;
+    background-color: #fff;
+    color: #000;
+    border: none;
+    width: 50px;
+    border-radius: 50px;
+    cursor: pointer;
+    font-size: 20px;
+    font-weight: 900;
+
+}
+
+#currentDate{
+    color: white;
+    font-size: 20px;
+    margin: auto auto auto 20px;
+}
+
+.schedule {
+    padding: 20px;
+    display: none;
+
+}
+.schedule.dark-mode{
+    background-color: #282929;
+    color: #fff;
+}
+.schedule h1.dark-mode{
+    color: #fff;
+}
+.schedule.active {
+    display: block;
+}
+
+.timetable{
+    display: flex;
+}
+.time{
     display: flex;
     flex-direction: column;
-    min-height: 100vh;
-    background-color: #D9E2EF;
+    width: 10%;
+
+}
+.time span{
+    position: relative;
+}
+.timeLine{
+    background-color: #CCCCCC;
+    width: calc(70vw);
+    height: 1px;
+    position: absolute;
+    top: 50%;
+    left: calc(10vh);
 }
 
-/* Sekcja obsługi dla osób niepełnosprawnych */
-.fontSize{
-    position: fixed;
-    top: 10px;
-    right: 10px;
-    display: flex;
-    flex-direction: row;
-    gap: 10px;
-    z-index: 1000;
+.cardsContainer{
+    position: relative;
+    width: 90%;
+    height: 500px;
 }
 
-.fontSize button{
-    padding: 10px;
-    font-size: 10px;
-    background-color: #008046;
-    color: white;
-    border: none;
+.cardsContainer .event {
+    position: absolute;
+    background-color:  #10b981;
     border-radius: 5px;
-    cursor: pointer;
-    transition: background-color 0.3s;
+    color: #fff;
+    font-size: 14px;
+    padding: 5px;
+    box-sizing: border-box;
+}
+.event.lecture {
+    background-color: #3b82f6;
+}
+.event.laboratory {
+    background-color: #10b981;
+}
+.event.exercises {
+    background-color: #8b5cf6;
+}
+.event.lektorat {
+    background-color: #ef4444;
 }
 
-h1{
-    text-align: center;
-}
-
-.timetable table{
-    text-align: center;
-}
-
-.filterMenu{
-
-    text-align: center;
+.footer {
+    position: fixed;
     bottom: 0;
     left: 0;
-    width: 100%;
-    padding: 10px;
-}
-/* Stylizacja planu */
-.timetable {
-    flex-grow: 1;
-    width: 100%;
-    max-width: 1200px;
-    margin: 30px auto;
-    padding: 20px;
-    background-color: #F5F7FB;
-    border-radius: 30px;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-}
-
-#compare{
-    background-color: #2F3882;
-    color: white;
-    border: none;
-    padding: 10px 20px;
-    font-size: 16px;
-    cursor: pointer;
-    border-radius: 5px;
-}
-/* guzik porówań powinien być wyłączony jeżeli w wyszukiwanaich nic sie nie zmieniło,
-bo po co porównywać to samo
- */
-#compare:disabled{
-    background-color: #ccc;
-    cursor: not-allowed;
-}
-/* Sylizacja guzika wyboru zakresu czasu planu */
-.timeInterval {
-    padding: 10px 20px;
+    right: 0;
     background-color: #008046;
     color: white;
-    border: none;
-    cursor: pointer;
-    font-size: 16px;
-    border-radius: 5px;
-    margin: 10px 0;
+    padding: 10px;
+    z-index: 1000;
+
+    transition: transform 0.3s ease;
+}
+.footerSection{
+    width: calc(50%)px;
+    margin-top: 30px;
+    justify-content: space-between; /* Równe odstępy między elementami */
+    align-items: center; /* Wyśrodkowanie w pionie */
+    margin: 30px auto; /* Wyśrodkowanie kontenera na stronie */
+}
+.footer.collapsed {
+    transform: translateY(92%);
+
 }
 
-ul li {
-    margin: 0 10px;
-}
-
-ul li a {
-    color: white;
-    padding: 10px 20px;
-    text-decoration: none;
-    display: block;
+.footer .toggle {
     text-align: center;
-}
-
-ul li a:hover {
-    background-color: #575757;
-}
-
-#daily, #weekly, #monthly {
-    display: none;
-    padding: 20px;
-
-    border-radius: 5px;
-    margin-top: 20px;
-}
-.hidden {
-    display: none;
-}
-/* Stylizacja guzika - że listy rozwijanej po kliknięciu */
-#timeMenu {
-    text-align: left;
-    padding: 10px;
-    list-style: none;
-    background-color: white;
-
-    border-radius: 30px;
-    margin-top: 10px;
-    /*box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);*/
-}
-
-#timeMenu li a {
-    color: black;
-    padding: 10px;
-    display: block;
-    text-decoration: none;
-    border-radius: 3px;
-}
-
-#timeMenu li a:hover {
-    background-color: #f0f0f0;
-}
-
-#timeMenu.active {
-    display: block;
-}
-
-/* Wyświetlanie aktywnej sekcji */
-#daily.active, #weekly.active, #monthly.active {
-    display: block;
-}
-
-/* Stylizacja menu filtrów */
-.filterMenu {
-
-
-    width: 100%;
-    max-width: 100%;
-    margin: 30px auto;
-    padding: 20px;
-    background-color: #fff;
-
-    border-radius: 30px;
-    /*box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);*/
-
-    margin-bottom: 30px;
-    z-index: 1000; /*Triczek zeby pole filtrów nam nie znikaało 😎*/
-
-}
-
-.filterMenu form {
-    display: flex;
-    flex-direction: column;
-    gap: 15px;
-}
-
-.filterMenu input {
-    padding: 10px;
-    font-size: 16px;
-    border: 1px solid #ccc;
-    border-radius: 5px;
-}
-
-.filterMenu input:focus {
-    outline: none;
-    border-color: #4CAF50;
-}
-
-.filterMenu button {
-    padding: 10px 20px;
-    background-color: #008046;
-    color: white;
-    border: none;
     cursor: pointer;
-    font-size: 16px;
-    border-radius: 5px;
-    margin-top: 15px;
-}
-
-.filterMenu button:hover {
-    background-color: #45a049;
-}
-
-/* Stylizacja dla kontenera, aby menu było zawsze na dole */
-body {
-    display: flex;
-    flex-direction: column;
-    min-height: 100vh;
-}
-
-.filterMenu {
-    margin-top: auto; /* Umieszczamy menu na dole */
-
-}
-
-/* STYLIZACJA PLANU */
-/* Można dużo tutaj skrócić ogarnie sie potem*/
-/* weekly css */
-#weekly .schedule-timetable {
-
-    position: relative;
-    display: grid;
-    grid-template-columns: 100px repeat(7, 1fr);
-    gap: 1px;
-    background-color: #ccc;
-    border-radius: 45px;
-}
-#weekly .schedule-timetable > div {
-    background-color: #fff;
-    padding: 10px;
-    text-align: center;
-
-}
-#weekly .schedule-timetable .time {
-    font-size: 11px;
-    font-weight: 500;
-    position: relative;
-
-}
-#weekly .schedule-timetable .day {
-    background-color: #F8F9FF;
-    font-weight: 400;
-    color: #5F7C9F;
-}
-#weekly .schedule-timetable span{
-    font-weight: bold;
-    font-size: 20px;
-}
-#weekly .event {
     position: absolute;
-    background-color: #a3d2ca;
-    border-radius: 5px;
-    color: #fff;
-    font-size: 14px;
+    top: -30px;
+    margin-left: 50%;
+    width: 50px;
     padding: 5px;
-    box-sizing: border-box;
-}
-#weekly .event.event-purple {
-    background-color: #b39ddb;
-}
-#weekly .event.event-green {
-    background-color: #80cbc4;
-}
-#weekly .event.event-blue {
-    background-color: #81d4fa;
+    background-color: #008046;
+    border-radius: 10px 10px 0 0;
 }
 
-/* daily css */
-#daily .schedule-timetable {
+.footer form {
+    display: flex;
+    justify-content: space-around;
+    flex-wrap: wrap;
+}
+
+.footer form input {
+    margin: 5px;
+    padding: 13px;
+    border: 1px white solid;
+    border-radius: 10px;
+    background-color: transparent;
+}
+
+.footerSection .inputContainer {
+    position: relative;
+    margin: 5px;
+}
+
+
+
+.inputName{
+    position: absolute;
+    background-color: #008046;
+    top: -8px;
+    left: 30px;
+    padding: 0 10px 0 10px;
+}
+.footer form button {
+    margin: 5px;
+    padding: 10px;
+    background-color: #000;
+    color: white;
+    border: none;
+    border-radius: 10px;
+    cursor: pointer;
+    font-size: 25px;
+}
+
+.footer form button:hover {
+    background-color: #003D8F;
+}
+#buttonContainer button{
+    background-color: #fff;
+    width: 50px;
+    color: #000;
+}
+/* From Uiverse.io by kyle1dev */
+.checkbox-container {
+
+}
+
+.ios-checkbox {
+    --checkbox-size: 28px;
+    --checkbox-color: #3b82f6;
+    --checkbox-bg: #dbeafe;
+    --checkbox-border: #93c5fd;
+
+    position: relative;
+    display: inline-block;
+    cursor: pointer;
+    user-select: none;
+    -webkit-tap-highlight-color: transparent;
+}
+
+.ios-checkbox input {
+    display: none;
+}
+
+.checkbox-wrapper {
+    position: relative;
+    width: var(--checkbox-size);
+    height: var(--checkbox-size);
+    border-radius: 8px;
+    transition: transform 0.2s ease;
+}
+
+.checkbox-bg {
+    position: absolute;
+    inset: 0;
+    border-radius: 8px;
+    border: 2px solid var(--checkbox-border);
+    background-color: #008046;
+    transition: all 0.2s ease;
+}
+
+.checkbox-icon {
+    position: absolute;
+    inset: 0;
     margin: auto;
-    width: 33%;
-    height: 700px;
-    position: relative;
-    display: grid;
-    grid-template-columns: 100px 1fr ;
-    gap: 1px;
-    background-color: #ccc;
-    border-radius: 45px;
+    width: 80%;
+    height: 80%;
+    color: white;
+    transform: scale(0);
+    transition: all 0.2s ease;
 }
-#daily .schedule-timetable > div {
-    background-color: #fff;
-    padding: 10px;
-    text-align: center;
 
+.check-path {
+    stroke-dasharray: 40;
+    stroke-dashoffset: 40;
+    transition: stroke-dashoffset 0.3s ease 0.1s;
 }
-#daily .schedule-timetable .time {
-    font-size: 11px;
-    font-weight: 500;
-    position: relative;
 
+/* Checked State */
+.ios-checkbox input:checked + .checkbox-wrapper .checkbox-bg {
+    background: var(--checkbox-color);
+    border-color: var(--checkbox-color);
 }
-#daily .schedule-timetable .day {
-    background-color: #F8F9FF;
-    font-weight: 400;
-    color: #5F7C9F;
+
+.ios-checkbox input:checked + .checkbox-wrapper .checkbox-icon {
+    transform: scale(1);
 }
-#daily .schedule-timetable span{
-    font-weight: bold;
-    font-size: 20px;
+
+.ios-checkbox input:checked + .checkbox-wrapper .check-path {
+    stroke-dashoffset: 0;
 }
-#daily .event {
-    position: absolute;
-    background-color: #a3d2ca;
-    border-radius: 5px;
-    color: #fff;
-    font-size: 14px;
-    padding: 5px;
-    box-sizing: border-box;
+
+/* Hover Effects */
+.ios-checkbox:hover .checkbox-wrapper {
+    transform: scale(1.05);
 }
-#daily .event.event-purple {
-    background-color: #b39ddb;
+
+/* Active Animation */
+.ios-checkbox:active .checkbox-wrapper {
+    transform: scale(0.95);
 }
-#daily .event.event-green {
-    background-color: #80cbc4;
+
+/* Focus Styles */
+.ios-checkbox input:focus + .checkbox-wrapper .checkbox-bg {
+    box-shadow: 0 0 0 4px var(--checkbox-bg);
 }
-#daily .event.event-blue {
-    background-color: #81d4fa;
+
+/* Color Themes */
+.ios-checkbox.blue {
+    --checkbox-color: #3b82f6;
+    --checkbox-bg: #dbeafe;
+    --checkbox-border: #93c5fd;
+}
+
+.ios-checkbox.green {
+    --checkbox-color: #10b981;
+    --checkbox-bg: #d1fae5;
+    --checkbox-border: #6ee7b7;
+}
+
+.ios-checkbox.purple {
+    --checkbox-color: #8b5cf6;
+    --checkbox-bg: #ede9fe;
+    --checkbox-border: #c4b5fd;
+}
+
+.ios-checkbox.red {
+    --checkbox-color: #ef4444;
+    --checkbox-bg: #fee2e2;
+    --checkbox-border: #fca5a5;
+}
+
+/* Animation */
+@keyframes bounce {
+    0%,
+    100% {
+        transform: scale(1);
+    }
+    50% {
+        transform: scale(1.1);
+    }
+}
+
+.ios-checkbox input:checked + .checkbox-wrapper {
+    animation: bounce 0.3s cubic-bezier(0.4, 0, 0.2, 1);
 }
